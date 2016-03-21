@@ -20,10 +20,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tasks = [[NSMutableArray alloc] init];
-    
-    
-    
-    
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -62,7 +58,9 @@
 }
 
 - (IBAction)onEditButtonPressed:(UIButton*)sender {
-    self.editing = YES;
+    
+    [self.tableView setEditing:YES animated:YES];
+    
     if ([sender.currentTitle isEqualToString:@"Edit"]) {
     [sender setTitle:@"Done" forState:UIControlStateNormal];
     }
@@ -91,7 +89,8 @@ if ([self.editButton.currentTitle isEqualToString:@"Done"]) {
       
 }
 - (IBAction)onSwipeGesture:(UISwipeGestureRecognizer *)sender {
-
+    
+    
     if (sender.state == UIGestureRecognizerStateEnded) {
         CGPoint gestureLocation = [sender locationInView:self.tableView];
         NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:gestureLocation];
@@ -113,17 +112,7 @@ if ([self.editButton.currentTitle isEqualToString:@"Done"]) {
     return YES;
 }
 // Process the row move. This means updating the data model to correct the item indices.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath
-      toIndexPath:(NSIndexPath *)toIndexPath {
-    NSString *item = [[self.tableView objectAtIndex:fromIndexPath.row] retain];
-    [self.tasks removeObject:item];
-    [self.tasks insertObject:item atIndex:toIndexPath.row];
-    [item release];
-}
 
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
     NSString *stringToMove = self.tasks[sourceIndexPath.row];
