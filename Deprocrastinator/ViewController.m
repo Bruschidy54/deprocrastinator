@@ -39,8 +39,9 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
-   
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.textLabel.textColor = [UIColor greenColor];
+    
 }
 
 
@@ -51,6 +52,18 @@
     [self.tableView reloadData];
     self.textFieldOutlet.text = @"";
     [self.view endEditing:YES];
+}
+
+- (IBAction)onEditButtonPressed:(UIButton*)sender {
+    
+    [sender setTitle:@"Done" forState:UIControlStateNormal];
+    
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    return YES;
 }
 
 @end
