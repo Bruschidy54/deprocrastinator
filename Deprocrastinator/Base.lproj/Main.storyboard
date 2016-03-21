@@ -48,6 +48,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="14o-oH-2Ih">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellID" id="dWe-OE-hdF">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -68,6 +69,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="Niz-FT-zeZ"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="2rt-q4-uao"/>
+                                    <outletCollection property="gestureRecognizers" destination="Yhg-nq-i1S" appends="YES" id="Zbl-xS-3Nd"/>
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2U-as-YVc">
@@ -95,6 +97,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="XZe-5e-MEX" secondAttribute="trailing" id="JMV-0b-pWi"/>
                             <constraint firstAttribute="trailing" secondItem="c2U-as-YVc" secondAttribute="trailing" constant="65" id="MEh-gk-4Zq"/>
@@ -153,6 +156,9 @@
                                 <include reference="ezc-Le-vLd"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Yhg-nq-i1S" appends="YES" id="9ze-ar-d7c"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="editButton" destination="c2U-as-YVc" id="fEI-ab-frr"/>
