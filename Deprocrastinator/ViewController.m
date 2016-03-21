@@ -62,6 +62,7 @@
 }
 
 - (IBAction)onEditButtonPressed:(UIButton*)sender {
+    self.editing = YES;
     if ([sender.currentTitle isEqualToString:@"Edit"]) {
     [sender setTitle:@"Done" forState:UIControlStateNormal];
     }
@@ -98,11 +99,17 @@ if ([self.editButton.currentTitle isEqualToString:@"Done"]) {
        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:swipedIndexPath];
          cell.textLabel.textColor = [UIColor redColor];
         [self.tableView reloadData];
-    
-    
-}
+    }
 }
 
-
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    NSString *stringToMove = self.tasks[sourceIndexPath.row];
+    [self.tasks removeObjectAtIndex:sourceIndexPath.row];
+    [self.tasks insertObject:stringToMove atIndex:destinationIndexPath.row];
+}
 
 @end
