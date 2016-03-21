@@ -90,17 +90,36 @@ if ([self.editButton.currentTitle isEqualToString:@"Done"]) {
       
 }
 - (IBAction)onSwipeGesture:(UISwipeGestureRecognizer *)sender {
+
     if (sender.state == UIGestureRecognizerStateEnded) {
         CGPoint gestureLocation = [sender locationInView:self.tableView];
         NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:gestureLocation];
-        //found IndexPath for swiped cell. Now we can do anything what we need.
-        //In my case it's cell reloading with new image in UIImageView.
        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:swipedIndexPath];
-         cell.textLabel.textColor = [UIColor redColor];
+        if ([cell.textLabel.textColor isEqual:[UIColor redColor]] || [cell.textLabel.textColor isEqual:[UIColor blackColor]]) {
+            cell.textLabel.textColor = [UIColor greenColor];
+        }
+        else if ([cell.textLabel.textColor isEqual:[UIColor greenColor]]) {
+           cell.textLabel.textColor = [UIColor yellowColor];
+        }
+        else {
+            cell.textLabel.textColor = [UIColor redColor];
+
+        }
         [self.tableView reloadData];
     
     
 }
+}
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+// Process the row move. This means updating the data model to correct the item indices.
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath
+      toIndexPath:(NSIndexPath *)toIndexPath {
+    NSString *item = [[self.tableView objectAtIndex:fromIndexPath.row] retain];
+    [self.tasks removeObject:item];
+    [self.tasks insertObject:item atIndex:toIndexPath.row];
+    [item release];
 }
 
 
