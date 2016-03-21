@@ -51,7 +51,6 @@
     
 }
 
-
 - (IBAction)onAddButtonPressed:(id)sender {
     
     NSString *task = self.textFieldOutlet.text;
@@ -80,44 +79,36 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
-  
-    
-
-if ([self.editButton.currentTitle isEqualToString:@"Done"]) {
+if ([self.editButton.currentTitle isEqualToString:@"Edit"]) {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
                 // Delete the row from the data source
-            cell.textLabel.textColor = [UIColor blackColor];
-            [self.tasks removeObjectAtIndex:indexPath.row];
-            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]withRowAnimation:YES];
-            [self.tableView reloadData];
-        
-//        UIAlertController *alert = [[UIAlertControllerS alloc] initWithTitle:@"t" message:@"del?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil];
-//        [alert show];
+        cell.textLabel.textColor = [UIColor blackColor];
+        [self.tasks removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]withRowAnimation:YES];
+        [self.tableView reloadData];
         
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Delete" message:@"Are you sure you want to delete?" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *delete = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        }];
+        
+}];
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
         [alertController addAction:delete];
         [alertController addAction:cancel];
         [self presentViewController:alertController animated:YES completion:nil];
-        
-        
-        
-       }
-    }
-      
-}
-
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    NSIndexPath *path = [self.tableView indexPathForSelectedRow];
-    if (buttonIndex != [alertView cancelButtonIndex]) {
-        //my code to delete from the data source is here. it works fine.
-        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:UITableViewRowAnimationFade];
+        }
     }
 }
+
+//- (void)alertView:(UIAlertController *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+//    if (buttonIndex != [alertView cancelButtonIndex]) {
+//        //my code to delete from the data source is here. it works fine.
+//        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:UITableViewRowAnimationFade];
+//    }
+//}
+
+
 - (IBAction)onSwipeGesture:(UISwipeGestureRecognizer *)sender {
     
     
