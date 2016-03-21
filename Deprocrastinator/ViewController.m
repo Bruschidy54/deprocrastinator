@@ -11,6 +11,7 @@
 @interface ViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldOutlet;
+@property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property NSMutableArray *tasks;
 @end
 
@@ -41,6 +42,11 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.textLabel.textColor = [UIColor greenColor];
+    if ([self.editButton.currentTitle isEqualToString: @"Done"]) {
+        [self.tasks removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
+        [self.tableView reloadData];
+    }
     
 }
 
@@ -65,5 +71,15 @@
 
     return YES;
 }
+
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        // Delete the row from the data source
+//        
+//        [self.tasks removeObjectAtIndex:indexPath.row];
+//        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
+//        [self.tableView reloadData];
+//    }
+//}
 
 @end
