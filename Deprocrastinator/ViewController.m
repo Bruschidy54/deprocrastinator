@@ -11,7 +11,6 @@
 @interface ViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldOutlet;
-
 @property NSMutableArray *tasks;
 @end
 
@@ -19,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tasks = [[NSMutableArray alloc] init];
     
     
     
@@ -29,7 +29,6 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
     cell.textLabel.text = [self.tasks objectAtIndex:indexPath.row];
-    
     return cell;
 }
 
@@ -39,10 +38,19 @@
     return self.tasks.count;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
+   
+}
+
+
 - (IBAction)onAddButtonPressed:(id)sender {
     
     NSString *task = self.textFieldOutlet.text;
     [self.tasks addObject:task];
+    [self.tableView reloadData];
+    self.textFieldOutlet.text = @"";
+    [self.view endEditing:YES];
 }
 
 @end

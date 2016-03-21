@@ -52,6 +52,7 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellID" id="dWe-OE-hdF">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dWe-OE-hdF" id="rSC-0m-VIf">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -81,15 +82,15 @@
                                 <exclude reference="14o-oH-2Ih"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="ibm-Uf-dFR"/>
                                 <exclude reference="js1-3J-Mme"/>
                                 <exclude reference="xdd-LK-tzr"/>
-                                <exclude reference="NgQ-pu-rCs"/>
-                                <exclude reference="Xzd-JU-wMO"/>
-                                <exclude reference="ezc-Le-vLd"/>
                                 <exclude reference="JMV-0b-pWi"/>
                                 <exclude reference="R1u-Sm-CVW"/>
                                 <exclude reference="e3y-1H-kD5"/>
-                                <exclude reference="ibm-Uf-dFR"/>
+                                <exclude reference="NgQ-pu-rCs"/>
+                                <exclude reference="Xzd-JU-wMO"/>
+                                <exclude reference="ezc-Le-vLd"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -99,15 +100,15 @@
                                 <include reference="14o-oH-2Ih"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="ibm-Uf-dFR"/>
                                 <include reference="js1-3J-Mme"/>
                                 <include reference="xdd-LK-tzr"/>
-                                <include reference="NgQ-pu-rCs"/>
-                                <include reference="Xzd-JU-wMO"/>
-                                <include reference="ezc-Le-vLd"/>
                                 <include reference="JMV-0b-pWi"/>
                                 <include reference="R1u-Sm-CVW"/>
                                 <include reference="e3y-1H-kD5"/>
-                                <include reference="ibm-Uf-dFR"/>
+                                <include reference="NgQ-pu-rCs"/>
+                                <include reference="Xzd-JU-wMO"/>
+                                <include reference="ezc-Le-vLd"/>
                             </mask>
                         </variation>
                     </view>
