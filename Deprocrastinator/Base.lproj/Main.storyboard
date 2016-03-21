@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,109 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type task here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hOW-u9-0I3">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZe-5e-MEX">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="66" id="Tcy-sU-kwg"/>
+                                    <constraint firstAttribute="height" constant="30" id="vfH-8x-7g8"/>
+                                </constraints>
+                                <state key="normal" title="Add"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Tcy-sU-kwg"/>
+                                        <exclude reference="vfH-8x-7g8"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Tcy-sU-kwg"/>
+                                        <include reference="vfH-8x-7g8"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="onAddButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XVN-KS-Zws"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="14o-oH-2Ih">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellID" id="dWe-OE-hdF">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dWe-OE-hdF" id="rSC-0m-VIf">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Niz-FT-zeZ"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="2rt-q4-uao"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="XZe-5e-MEX" secondAttribute="trailing" id="JMV-0b-pWi"/>
+                            <constraint firstAttribute="trailing" secondItem="14o-oH-2Ih" secondAttribute="trailing" id="NgQ-pu-rCs"/>
+                            <constraint firstItem="XZe-5e-MEX" firstAttribute="leading" secondItem="hOW-u9-0I3" secondAttribute="trailing" id="R1u-Sm-CVW"/>
+                            <constraint firstItem="14o-oH-2Ih" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="29" id="Xzd-JU-wMO"/>
+                            <constraint firstItem="XZe-5e-MEX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="e3y-1H-kD5"/>
+                            <constraint firstItem="14o-oH-2Ih" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ezc-Le-vLd"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="14o-oH-2Ih" secondAttribute="bottom" id="ibm-Uf-dFR"/>
+                            <constraint firstItem="hOW-u9-0I3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="js1-3J-Mme"/>
+                            <constraint firstItem="hOW-u9-0I3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="xdd-LK-tzr"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="hOW-u9-0I3"/>
+                                <exclude reference="XZe-5e-MEX"/>
+                                <exclude reference="14o-oH-2Ih"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="js1-3J-Mme"/>
+                                <exclude reference="xdd-LK-tzr"/>
+                                <exclude reference="NgQ-pu-rCs"/>
+                                <exclude reference="Xzd-JU-wMO"/>
+                                <exclude reference="ezc-Le-vLd"/>
+                                <exclude reference="JMV-0b-pWi"/>
+                                <exclude reference="R1u-Sm-CVW"/>
+                                <exclude reference="e3y-1H-kD5"/>
+                                <exclude reference="ibm-Uf-dFR"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="hOW-u9-0I3"/>
+                                <include reference="XZe-5e-MEX"/>
+                                <include reference="14o-oH-2Ih"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="js1-3J-Mme"/>
+                                <include reference="xdd-LK-tzr"/>
+                                <include reference="NgQ-pu-rCs"/>
+                                <include reference="Xzd-JU-wMO"/>
+                                <include reference="ezc-Le-vLd"/>
+                                <include reference="JMV-0b-pWi"/>
+                                <include reference="R1u-Sm-CVW"/>
+                                <include reference="e3y-1H-kD5"/>
+                                <include reference="ibm-Uf-dFR"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="14o-oH-2Ih" id="xUj-Sp-Jcl"/>
+                        <outlet property="textFieldOutlet" destination="hOW-u9-0I3" id="4rv-nn-cwv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="279" y="350"/>
         </scene>
     </scenes>
 </document>
