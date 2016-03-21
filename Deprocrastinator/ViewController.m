@@ -62,9 +62,12 @@
 }
 
 - (IBAction)onEditButtonPressed:(UIButton*)sender {
-    
+    if ([sender.currentTitle isEqualToString:@"Edit"]) {
     [sender setTitle:@"Done" forState:UIControlStateNormal];
-    
+    }
+    else {
+    [sender setTitle:@"Edit" forState:UIControlStateNormal];
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -85,6 +88,11 @@ if ([self.editButton.currentTitle isEqualToString:@"Done"]) {
        }
     }
       
+}
+- (IBAction)onSwipeGesture:(UISwipeGestureRecognizer *)sender {
+    sender
+    
+    
 }
 
 
